@@ -1,0 +1,22 @@
+name : Hello world ci
+on:
+    push:
+        branches:  [main,master]
+    workflow_dispatch:
+jobs:
+    test-app:
+        runs-on: ubuntu-latest
+        steps:
+            - name : Get Source Code
+              uses: actions/checkout@v4
+            - name: Setup Node Js environment
+              uses: actions/setup-node@v4
+              with: 
+                node-version : 20
+            - name : install dependencies
+              run : npm  install
+            - name : Run Automated Test
+              run : npm test
+
+            
+            
